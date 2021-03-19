@@ -1,25 +1,21 @@
 #include"libOne.h"
 void gmain(){
     window(1000, 1000);
-    while (notQuit){
-        //ベクトル
-        float vx = mathMouseX;
-        float vy = mathMouseY;
-        //ベクトルの大きさ
-        float mag = sqrt(vx * vx + vy * vy);
-        //クリアして座標を描画
-        clear(200);
-        mathAxis(5.1f);
-        //ベクトルを描画
-        strokeWeight(5);
-        stroke(0);
-        mathArrow(0, 0, vx, vy);
-        mathLine(0, 0, vx, 0);
-        mathLine(vx, 0, vx, vy);
-        //テキストでデータを描画
-        textSize(50);
-        text((let)"vec(" + vx + "," + vy + ")", 0, 50);
-        text((let)"mag:" + mag, 0, 100);
-        text((let)"" + sqrt(3)/2, 0, 150);
-    }
+    clear(200);
+    //（√3,1)のベクトルを正規化する
+    float vx = sqrt(3);
+    float vy = 1;
+    float mag = sqrt(vx * vx + vy * vy);
+    float nvx = vx / mag;
+    float nvy = vy / mag;
+    //３０度の時の底辺と高さ
+    angleMode(DEGREES);
+    float cos30 = cos(30);
+    float sin30 = sin(30);
+    //テキストでデータを描画
+    textSize(50);
+    fill(0);
+    text((let)"nvx  =" + nvx + " nvy  =" + nvy, 0, 50);
+    text((let)"cos30=" + cos30 + " sin30=" + sin30, 0, 100);
+    while (notQuit){ }
 }
